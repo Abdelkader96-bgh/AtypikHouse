@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div style="background-image: url('/image/foto/4.jpg') ; " >
+
+<div class="jumbotron" style="margin-top:0px; width:75%; margin:0 auto; background: rgba(11, 13, 24, 0.6);">
+
+ <h1 class="display-6" style="color:#808000;">Devenir un propriétaire ! il suffit de changer votre role </h1>
+
+ <!-- formulaire de la modification de role -->
+        <div class="col-lg-10">
+
+            {{ form_start(form) }}
+			     <div class="form-group">
+                    <label style="color:#808000;">Votre email:</label>
+                    {{ form_widget(form.email) }}
+                </div>
+                <div class="form-group">
+                    <label style="color:#808000;">Choisir votre nouveau  role :</label>
+                    {{ form_widget(form.roles) }}
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Modifier</button>
+                </div>
+
+            {{ form_end(form) }}
+        </div>
+		</div>
+
+
+{% endblock %}

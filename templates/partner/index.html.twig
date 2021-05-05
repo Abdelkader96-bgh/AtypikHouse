@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Partner index{% endblock %}
+
+{% block body %}
+    <h1>Partner index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Telephone</th>
+                <th>Nom_entreprise</th>
+                <th>Statut</th>
+                <th>CodePostal</th>
+                <th>Ville</th>
+                <th>Departement</th>
+                <th>Regeion</th>
+                <th>Typologie</th>
+                <th>Commentaire</th>
+                <th>Partenaire</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for partner in partners %}
+            <tr>
+                <td>{{ partner.id }}</td>
+                <td>{{ partner.nom }}</td>
+                <td>{{ partner.prenom }}</td>
+                <td>{{ partner.email }}</td>
+                <td>{{ partner.telephone }}</td>
+                <td>{{ partner.nomEntreprise }}</td>
+                <td>{{ partner.statut }}</td>
+                <td>{{ partner.codePostal }}</td>
+                <td>{{ partner.ville }}</td>
+                <td>{{ partner.departement }}</td>
+                <td>{{ partner.regeion }}</td>
+             
+                <td>{{ partner.commentaire }}</td>
+                <td>{{ partner.partenaire |join('|')}}</td>
+                <td>
+                    <a href="{{ path('partner_show', {'id': partner.id}) }}">show</a>
+                    <a href="{{ path('partner_edit', {'id': partner.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('partner_new') }}">Create new</a>
+{% endblock %}

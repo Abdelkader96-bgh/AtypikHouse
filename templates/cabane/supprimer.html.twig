@@ -1,0 +1,6 @@
+<!-- supprission du cabane -->
+<form method="post" action="{{ path('cabane_delete', {'cabane': cabane.id}) }}" onsubmit="return confirm('Ëtes-vous sûr de vouloir supprimer ce cabane?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <button class="btn btn-danger">Supprimer</button>
+</form>
+<!-- /fin de supression -->

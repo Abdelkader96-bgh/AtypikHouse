@@ -1,0 +1,335 @@
+{% extends 'base.html.twig' %}
+{% block title %}Détails de notre Cabane {% endblock %}
+{% block body %}
+
+<body style="background-image: url('/image/foto/bois.jpg');">
+
+ <!--div class="col"-->
+
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel"> 
+                    <ol class="carousel-indicators">
+                      {% for image in cabane.images %}
+                          <li data-target="#carouselExampleControls" data-slide-to="{{ loop.index-1 }}" class="{{ loop.first ? 'active' : '' }}"></li>
+                      {% endfor %}
+                    </ol>
+                    <div class="carousel-inner" role="listbox" >
+                      {% for image in cabane.images %}
+              
+                <div class="carousel-item {{ loop.first ? 'active' : '' }}">
+                    <img class="d-block w-100" src="{{ asset('/uploads/'~image.name) }}" alt="First slide">
+                       <div class="carousel-caption d-none d-md-block">
+                             <h1>{{cabane.nom}}</h1>  
+                        </div>
+                  
+                </div>
+                     {% endfor %}
+<!--/div-->        
+                <!--Control-->
+              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+             </div>
+            </div>
+
+            <!--la première section-->
+            <div class="col">
+          <section  style="float:left; width:58%; height:170px; background: rgba(11, 13, 24, 0.6); margin: 10px 50px ;">
+            <nav class="navbar" style="width:100%; background: rgba(11, 13, 24, 0.6) ">
+              <form class="form-inline">
+                <button class="btn btn-success" type="button"><a href="#destination" style="color:white;">Destination</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#accs" style="color:white;">Equipement</a></button>
+                <button class="btn btn-outline-success" type="button"><a href="#restaurer" style="color:white;">Se Resteaurer</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#activi" style="color:white;">Activité</a></button>
+                <button class="btn btn-outline-success" type="button"><a href="#disponi" style="color:white;">Disponibilité</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#prix" style="color:white;">Prix </a></button>
+                <button class="btn btn-outline-success" type="button"><a href="#acces" style="color:white;">Capacité</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#description" style="color:white;">Description</a></button>
+              </form>
+            </nav>
+              <div id="destination" style="width:85%;height:80px;background-color:white; margin:10px 50px 20px; border-style: dotted; border-width:5px; border-color:rgb(50,205,50);">
+                <h6> Destination :</h6>
+                <p><i class="fa fa-map-marker" aria-hidden="true"></i>   {{cabane.destination}}</p>
+              </div>
+          </section>
+
+            <!--la 2 section-->
+
+          <section  style="float:left; width:58%; height:170px; background: rgba(11, 13, 24, 0.6); margin: 10px 50px ;">
+            <nav class="navbar" style="width:100%; background: rgba(11, 13, 24, 0.6) ">
+              <form class="form-inline">
+                <button class="btn btn-outline-success" type="button"><a href="#destination" style="color:white;">Destination</a></button>
+                <button class="btn btn-sm btn-success" type="button"><a href="#accs" style="color:white;">Equipement</a></button>
+                <button class="btn btn-outline-success" type="button"><a href="#restaurer" style="color:white;">Se Resteaurer</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#activi" style="color:white;">Activité</a></button>
+                <button class="btn btn-outline-success" type="button"><a href="#disponi" style="color:white;">Disponibilité</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#prix" style="color:white;">Prix </a></button>
+                <button class="btn btn-outline-success" type="button"><a href="#acces" style="color:white;">Capacité</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#description" style="color:white;">Description</a></button>
+              </form>
+            </nav>
+                <div id="accs" style="width:85%;height:80px;background-color:white; margin:10px 50px 20px;border-style: dotted; border-width:5px; border-color:rgb(50,205,50);">
+                    <h6> Nos équipements sont :</h6>
+                    <p><i class='fab fa-accessible-icon' style='font-size:24px'></i> {{cabane.equipment}}</p>
+                </div>
+          </section>
+
+            <!--la 3 section-->
+
+            <section  style="float:left; width:58%; height:170px; background: rgba(11, 13, 24, 0.6); margin: 10px 50px ;">
+            <nav class="navbar" style="width:100%; background: rgba(11, 13, 24, 0.6) ">
+              <form class="form-inline">
+                <button class="btn btn-outline-success" type="button"><a href="#destination" style="color:white;">Destination</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#accs" style="color:white;">Equipement</a></button>
+                <button class="btn btn-success" type="button"><a href="#restaurer" style="color:white;">Se Resteaurer</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#activi" style="color:white;">Activité</a></button>
+                <button class="btn btn-outline-success" type="button"><a href="#disponi" style="color:white;">Disponibilité</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#prix" style="color:white;">Prix </a></button>
+                <button class="btn btn-outline-success" type="button"><a href="#acces" style="color:white;">Capacité</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#description" style="color:white;">Description</a></button>
+                </form>
+                </nav>
+
+                <div id="restaurer" style="width:90%;height:80px;background-color:white; margin:10px 50px 20px; border-style: dotted; border-width:5px; border-color:rgb(50,205,50);">
+              <h6>Durant votre séjour on proposant plusieurs offres pour se restaurer comme :</h6>
+              <p><i class='fas fa-drumstick-bite' style='font-size:24px'></i>   {{cabane.seRestaurer}}</p>
+              </div>
+            </section>
+            <!--la 4 section-->
+            <section  style="float:left; width:58%; height:190px; background: rgba(11, 13, 24, 0.6); margin: 10px 50px ;">
+            <nav class="navbar" style="width:100%; background: rgba(11, 13, 24, 0.6) ">
+              <form class="form-inline">
+                <button class="btn btn-outline-success" type="button"><a href="#destination" style="color:white;">Destination</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#accs" style="color:white;">Equipement</a></button>
+                <button class="btn btn-outline-success" type="button"><a href="#restaurer" style="color:white;">Se Resteaurer</a></button>
+                <button class="btn btn-sm btn-success" type="button"><a href="#activi" style="color:white;">Activité</a></button>
+                <button class="btn btn-outline-success" type="button"><a href="#disponi" style="color:white;">Disponibilité</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#prix" style="color:white;">Prix</a></button>
+                <button class="btn btn-outline-success" type="button"><a href="#acces" style="color:white;">Capacité</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#description" style="color:white;">Description</a></button>
+                </form>
+                </nav>
+                <div id="activi" style="width:90%;height:90px;background-color:white; margin:10px 50px 20px;border-style: dotted; border-width:5px; border-color:rgb(50,205,50);">
+              <h6>Notre service vous propose plusieurs activités pour que vous puissez passer des bons moments durant votre séjour comme :</h6>
+              <p><i class='fas fa-swimmer' style='font-size:24px'></i><i class='fas fa-heartbeat' style='font-size:24px'></i>{{cabane.activite}} </p>
+              </div>
+            </section>
+              <!--la 5 section-->
+            <section  style="float:left; width:58%; height:170px; background: rgba(11, 13, 24, 0.6); margin: 10px 50px ;">
+            <nav class="navbar" style="width:100%; background: rgba(11, 13, 24, 0.6) ">
+              <form class="form-inline">
+                <button class="btn btn-outline-success" type="button"><a href="#destination" style="color:white;">Destination</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#accs" style="color:white;">Equipement</a></button>
+                <button class="btn btn-outline-success" type="button"><a href="#restaurer" style="color:white;">Se Resteaurer</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#activi" style="color:white;">Activité</a></button>
+                <button class="btn btn-success" type="button"><a href="#disponi" style="color:white;">Disponibilité</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#prix" style="color:white;">Prix </a></button>
+                <button class="btn btn-outline-success" type="button"><a href="#acces" style="color:white;">Capacité</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#description" style="color:white;">Description</a></button>
+                </form>
+                </nav>
+                <div id="disponi" style="width:90%;height:80px;background-color:white; margin:10px 50px 20px; border-style: dotted; border-width:5px; border-color:rgb(50,205,50);">
+                <h6>Avant de réserver, Vous devez vérfier la disponibilité de notre cabane : </h6>
+                <p> Notre cabane est disponible entre le <i class='fas fa-calendar-alt' style='font-size:24px'></i>  <strong>{{cabane.dateDisponible ? cabane.dateDisponible|date('Y-m-d') : '' }}</strong>
+              et le <i class='far fa-calendar-alt' style='font-size:24px'></i>    
+              <strong>{{cabane.dateNondisponible ? cabane.dateNondisponible|date('Y-m-d') : ''}}</strong> </p>
+              
+              </div>
+            </section>
+
+              <!--la 6 section-->
+            <section  style="float:left; width:58%; height:195px; background: rgba(11, 13, 24, 0.6); margin: 10px 50px;">
+            <nav class="navbar" style="width:100%; background: rgba(11, 13, 24, 0.6) ">
+              <form class="form-inline">
+                <button class="btn btn-outline-success" type="button"><a href="#destination" style="color:white;">Destination</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#accs" style="color:white;">Equipement</a></button>
+                <button class="btn btn-outline-success" type="button"><a href="#restaurer" style="color:white;">Se Resteaurer</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#activi" style="color:white;">Activité</a></button>
+                <button class="btn btn-outline-success" type="button"><a href="#disponi" style="color:white;">Disponibilité</a></button>
+                <button class="btn btn-sm btn-success" type="button"><a href="#prix" style="color:white;">Prix  </a></button>
+                <button class="btn btn-outline-success" type="button"><a href="#acces" style="color:white;">Capacité</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#description" style="color:white;">Description</a></button>
+                </form>
+                </nav>
+                <div id="prix" style="width:90%;height:115px;background-color:white; margin:10px 50px 20px; border-style: dotted; border-width:5px; border-color:rgb(50,205,50);">
+              <h6><i class='fas fa-hand-holding-usd' style='font-size:24px'></i> Notre prix est <strong>{{cabane.prix}}€ par nuit</strong> </h6>
+              <p> <strong>les bébés ne sont pas pris en compte dans le nombre de voyageurs.</strong></p>
+              </div>
+            </section>
+
+              <!--la 7 section-->
+            <section  style="float:left; width:58%; height:170px; background: rgba(11, 13, 24, 0.6); margin: 10px 50px ;">
+            <nav class="navbar" style="width:100%; background: rgba(11, 13, 24, 0.6) ">
+              <form class="form-inline">
+                <button class="btn btn-outline-success" type="button"><a href="#destination" style="color:white;">Destination</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#accs" style="color:white;">Equipement</a></button>
+                <button class="btn btn-outline-success" type="button"><a href="#restaurer" style="color:white;">Se Resteaurer</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#activi" style="color:white;">Activité</a></button>
+                <button class="btn btn-outline-success" type="button"><a href="#disponi" style="color:white;">Disponibilité</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#prix" style="color:white;">Prix </a></button>
+                <button class="btn btn-success" type="button"><a href="#acces" style="color:white;">Capacité</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#description" style="color:white;">Description</a></button>
+                </form>
+                </nav>
+                <div id="acces" style="width:90%;height:100px;background-color:white; margin:10px 50px 20px;border-style: dotted; border-width:5px; border-color:rgb(50,205,50);">
+              <h6><i class='fas fa-bed' style='font-size:24px'></i> Notre {{cabane.nom}} accueille à nombre limité des personnes grace à la surface de notre habitat</h6>
+              <p><strong> les nombres des personnes qu'on peut acceuillir est: {{cabane.nbrPlace}} </strong></p>
+              </div>
+            </section>
+
+            <!--la 8 section-->
+            <section  style="float:left; width:58%; height:170px; background: rgba(11, 13, 24, 0.6); margin: 10px 50px ;">
+            <nav class="navbar" style="width:100%; background: rgba(11, 13, 24, 0.6) ">
+              <form class="form-inline">
+                <button class="btn btn-outline-success" type="button"><a href="#destination" style="color:white;">Destination</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#accs" style="color:white;">Equipement</a></button>
+                <button class="btn btn-outline-success" type="button"><a href="#restaurer" style="color:white;">Se Resteaurer</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#activi" style="color:white;">Activité</a></button>
+                <button class="btn btn-outline-success" type="button"><a href="#disponi" style="color:white;">Disponibilité</a></button>
+                <button class="btn btn-sm btn-outline-secondary" type="button"><a href="#prix" style="color:white;">Prix </a></button>
+                <button class="btn btn-outline-success" type="button"><a href="#acces" style="color:white;">Capacité</a></button>
+                <button class="btn btn-sm btn-success" type="button"><a href="#description" style="color:white;">Description</a></button>
+                </form>
+                </nav>
+                <div id="description" style="width:90%;height:90px;background-color:white; margin:10px 50px 20px;border-style: dotted; border-width:5px; border-color:rgb(50,205,50);">
+              <p><strong>{{cabane.commentaire}}</strong></p>
+              
+              </div>
+            </section>
+            </div> 
+            </div>
+
+            <!--section pour les commentaires-->
+
+         <div class="col" style="margin-top:8px;">
+                <section  style="float:rghit; width:35%; height:600px; background: rgba(11, 13, 24, 0.6); margin-left:890px;">
+                    <h3 style="color:white;"><i class='fas fa-users' style='font-size:30px;color:yellow'></i>Regardez les avis des clients </br></h3>
+
+                   <div class="scroll" style="margin:auto; pandding:8px;width:420px;height:500px ; overflow-y:scroll ; background-color:white; border-style: dotted; border-width:5px; border-color:rgb(50,205,50); position:fix;">
+                   <h6>{{cabane.pointVues | length}} Commentaires : </h6>
+                     {% for pointVue in cabane.pointVues %}
+                        <div class="row">
+                            <div class="col">
+                              {{pointVue.autheur}}(<small>{{pointVue.createdAt | date ('d/m/Y à H:i')}}</small>)
+                            </div>
+                            <div class="col">
+                              {{pointVue.contenu | raw }}
+                             </div>
+                       </div>
+                      {% endfor %}
+       <!-- si la personne et connecte ril peut ajouter un commenatire --> 
+                    
+                   {% if app.user %}
+                      {{ form_start(form) }}
+                    <div class="form-group">
+                       <label style="color:#808000;">Nom et Prénom :</label>
+                         {{ form_widget(form.autheur) }}
+                    </div>
+                    <div class="form-group">
+                         <label style="color:#808000;">Commentaire:</label>
+                          {{ form_widget(form.contenu) }}
+                    </div>
+                    <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Valider</button>
+                     </div>
+                    {{ form_end(form) }}
+
+                    {% else %}
+                        <h2> Vous ne pouvez pas commenter  si vous n'étes pas connecté ! </h2>
+                        <a href="{{ path('security_login')}}" class="btn btn-success"> Connexion</a>
+                        {% endif %}
+              </div>   
+            </div>
+           </section>
+            <!--Section pour la réservation -->
+
+              <section  style="float:rghit; width:34%; height:550px; background: rgba(11, 13, 24, 0.6); margin-left:901px; margin-top:30px;">
+                    <div class="container">
+                        <div class="row">
+                           <div>
+                              </br>
+                                   </br>
+                                     <h5 style="color:#FFFFFF; margin-left:19px;">Soyez les premiers qui réserve ne ratez pas cette occasion <strong> {{cabane.prix}}€</strong>/nuit ! c'est le rève <h5>
+                           </div>
+                    
+                          <div class="col">
+                                <label style="color:#FFFFFF;">Date d'arrivée :</label>
+                                <input id="" type="text" name=" date">
+                          </div>
+
+                          <div class="col">
+                               <label style="color:#FFFFFF;">Date de départ :</label>
+                               <input id="" type="text" name="date">
+                         </div>
+                         </div>
+
+                       <div class="row">
+                         <div class="col-6">
+                          <label style="color:#FFFFFF;">Nombres de voyageurs</label>
+                          <input id="" type="number" name="date">
+                          </div>
+                        </div>
+
+                      <div class="row">
+                         <button type="submit" class="btn btn-success" style="width:200px; margin-left:130px; margin-top:50px;">Réserver</button>
+                      </div>
+               </div>
+                
+                <div class="container">
+                     </br>
+                          </br>
+                     <h6 style="color:#FFFFFF; margin-left: 50px;">Réservation et paiement en ligne 100% sécurisés.</h2>
+                         <img src="/image/foto/pay.png" width="200px" height="50px" class="center">
+               </div> 
+            </section>
+
+      <!--Section pour les cordonnées de propriètère-->
+
+               <section  style="float:rghit; width:34%; height:335px; background: rgba(11, 13, 24, 0.6); margin-left:901px; margin-top:30px;">
+                     
+                      <div class="row">
+                          <h2 style="color:#FFFFFF; margin-left: 150px; text-decoration : underline;"> <strong> Contact </strong></h2></br>
+                          <p style="color:#FFFFFF;"> Avant de passer à l'étape de réservation vous pouvez contacter dirctement le propriètère du cabane , pour plus d'information </p>
+                          <p style="color:#FFFFFF;"> Vous trouverez ci-joint tout les cordonnées nécessaires du propriètère .</p>
+                      </div>
+                      <div class="row">
+                            <div class="col">
+                                <h6 style="color:#FFFFFF; text-decoration : underline;"> Nom :          </h6>
+                            </div>
+                            <div class="col">
+                                <h6 style="color:#FFFFFF; text-decoration : underline;"> Prénom :          </h6>
+                            </div>
+                      </div>
+                          <div class="row">
+                           
+                            <h6 style="color:#FFFFFF; text-decoration : underline;"> Email :     </h6> </br>
+                         
+                         </div>
+
+                        <div class="row">
+                          <h6 style="color:#FFFFFF;  text-decoration : underline;"> Mobile :    </h6>
+                        </div>
+                      
+
+               </section>
+
+           </div>
+ {% endblock %}
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+

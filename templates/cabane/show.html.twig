@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+{% block title %}les cabanes ajoutées {% endblock %}
+
+{% block body %}
+<body style="background-image: url('/image/foto/55.jpg') ;">
+
+<div class="k" style="background: rgba(11, 13, 24, 0.6);">
+ <div class="container">
+       {{ form_start(form)}}
+          <div class="form-row">
+          <div class="col" style="margin-top:8px;">
+          {{form_row(form.maxPrix)}}
+          </div>
+          <div class="col" style="margin-top:8px;">
+          {{form_row(form.maxCapacite)}}
+          </div>
+          <div class="col" style="margin-top:8px;">
+          <button class="btn btn-success">Rechercher </button>
+          </div>
+          </div>
+          {{ form_end(form)}}
+          </div>
+          </div>
+
+
+          <h1>Réservez une cabane : </h1>
+
+          {% for cabane in cabanes %}
+          <div class="container">
+          <hr style="height: 2px; color: #839D2D; background-color: #839D2D; width: 50%; border: none;"> 
+
+    <div class="row">
+      <div class="col-md-6">
+
+
+          <!--Carousel Wrapper-->
+            <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+            <!--Indicators-->
+            <ol class="carousel-indicators">
+              {% for image in cabane.images %}
+              <li data-target="#carousel-example-1z" data-slide-to="{{ loop.index-1 }}" class="{{ loop.first ? 'active' : '' }}"></li>
+              {% endfor %}
+              </ol>
+
+            <!--/.Indicators-->
+
+            <!--Slides-->
+            
+            <div class="carousel-inner" role="listbox" >
+            {% for image in cabane.images %}
+
+              <!--First slide-->
+              
+                  <div class="carousel-item {{ loop.first ? 'active' : '' }}">
+                  <img src="{{ asset('/uploads/'~image.name) }}" alt="First slide" width="100px" height="200px"/>
+                  </div>
+                {% endfor %}
+              </div>
+            <!--/.Slides-->
+
+            <!--Controls-->
+            <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          <!--/.Controls-->
+          <!--/.Carousel Wrapper-->  
+          </div>
+               
+                <div class="caption">
+                <p>A partir : {{ cabane.prix}} par nuit </p>
+                <hr style="height: 2px; color: #839D2D; background-color: #839D2D; width: 50%; border: none;">
+                <p> Soyez les premiers qui reserve 😂 </p>
+                </div>
+                <div class="row">
+                <button class="btn btn-secondary"><a href="{{ path('cabane_detail', { 'cabane' : cabane.id }) }}"><strong>Plus de détail </strong></a></button>
+                </div>
+                </div>
+              <!--fin de caption-->
+
+                      <div class="col-md-6">
+                      <h2>{{ cabane.nom }}</h2>
+                      <h5><i class="fas fa-map-marker-alt"></i>{{ cabane.destination }}</h5>                     
+                      <p class="paraph" style="background:rgb(255, 0, 0, .25); width:40px;"><strong>Type de cabane: {{ cabane.type }}</strong></p>
+                      <p class="paraph" style="background:rgb(255, 0, 0, .25); width:40px;"><strong>nombre de place: {{ cabane.nbrPlace }}</strong></p>
+                      <p class="paraph" style="background:rgb(255, 0, 0, .25); width:60px;"><strong>Disponible à partir: {{cabane.datedisponible ? cabane.dateNondisponible|date('Y-m-d') : '' }}</strong></p> 
+                      <p class="paraph" style="background:rgb(255, 0, 0, .25);width:70px;"><strong>Prix par nuit: {{ cabane.prix }}</strong></p>
+                      <p class="paraph"><strong>Plus+</strong>{{ cabane.commentaire }}</p>
+                      
+                      
+                      <hr style="height: 2px; color: #839D2D; background-color: #839D2D; width: 50%; border: none;">
+                      </div>
+                      {% endfor %}
+                     <div class="pagination"> 
+                     <a>{{ knp_pagination_render(cabanes) }}</a>
+                     </div>
+
+ {% endblock %}
+                      

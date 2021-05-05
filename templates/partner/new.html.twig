@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+{% block title %} Ajouter Un Cabane {% endblock %}
+
+{% block body %}
+<body style="background-image: url('/image/foto/bois.jpg') ; " >
+
+<div class="jumbotron" style="margin-top:0px; width:75%; margin:0 auto; background-color :white;">
+
+ <h1 class="display-6" style="color:#808000;">Devenir un partenaire Il suffit de remplir ce formulaire !</h1>
+
+ <!-- formulaire de la création du cabane -->
+        <div class="col-lg-10">
+
+            {{ form_start(form) }}
+			     <div class="form-group">
+                    <label style="color:#808000;">Nom </label>
+                    {{ form_widget(form.nom) }}
+                </div>
+                
+               
+                <div class="form-group">
+                    <label style="color:#808000;">Prénom:</label>
+                    {{ form_widget(form.prenom) }}
+                </div>
+
+                <div class="form-group">
+                    <label style="color:#808000;">Email :</label>
+                    {{ form_widget(form.email) }}
+                </div>
+                
+				<div class="form-group">
+                    <label style="color:#808000;">telephone</label>
+                    {{ form_widget(form.telephone) }}
+                </div>
+
+                <div class="form-group">
+                    <label style="color:#808000;"> Nom de l'entreprise</label>
+                    {{ form_widget(form.nom_entreprise) }}
+                </div>
+
+                <div class="form-group">
+                <label style="color:#808000;">Statut</label>
+                {{ form_widget(form.statut) }}
+                 </div>
+
+                <div class="form-group">
+                 <label style="color:#808000;">Code Postal</label>
+                {{ form_widget(form.codePostal) }}
+                </div>
+
+                <div class="form-group">
+                    <label style="color:#808000;">Ville</label>
+                    {{ form_widget(form.ville) }}
+                </div>
+                <div class="form-group">
+                    <label style="color:#808000;">Région :</label>
+                    {{ form_widget(form.regeion) }}
+                </div>
+                <div class="form-group">
+                    <label style="color:#808000;">Département :</label>
+                    {{ form_widget(form.departement) }}
+                </div>
+
+                <div class="form-group">
+                    <label style="color:#808000;">Topologie :</label>
+                    {{ form_widget(form.typologie) }}
+                </div>
+
+                <div class="form-group">
+                    <label style="color:#808000;">  Descriptif:</label>
+                    {{ form_widget(form.commentaire) }}
+                </div>
+                 
+
+                <div class="form-group">
+                    <label style="color:#808000;">Partenaire :</label>
+                    {{ form_widget(form.partenaire) }}
+                </div>
+
+               
+                <div class="form-group">
+                <label style="color:#808000;">Images :</label>
+                {{ form_widget(form.images) }}
+                 </div>
+        
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Envoyer</button>
+                </div>
+
+            {{ form_end(form) }}
+        </div>
+		</div>
+
+
+
+        <!-- /Formulaire de création de cabane -->
+
+
+{% endblock %}

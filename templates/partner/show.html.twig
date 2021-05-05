@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Partner{% endblock %}
+
+{% block body %}
+    <h1>Partner</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ partner.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ partner.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ partner.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ partner.email }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ partner.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Nom_entreprise</th>
+                <td>{{ partner.nomEntreprise }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ partner.statut }}</td>
+            </tr>
+            <tr>
+                <th>CodePostal</th>
+                <td>{{ partner.codePostal }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ partner.ville }}</td>
+            </tr>
+            <tr>
+                <th>Departement</th>
+                <td>{{ partner.departement }}</td>
+            </tr>
+            <tr>
+                <th>Regeion</th>
+                <td>{{ partner.regeion }}</td>
+            </tr>
+            <tr>
+                <th>Typologie</th>
+                <td>hh</td>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td>{{ partner.commentaire }}</td>
+            </tr>
+            <tr>
+                <th>Partenaire</th>
+                <td>hh</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8">
+     <title>AtypikHouse</title>
+     <meta name="atypikhouse" content="reservation cabane en France">
+     <meta name="keywords" content="cabane dans les arabes">
+     
+    <link  rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-auto-replace-svg="nest"></script>
+    <script src="{{asset('js/main.js')}}"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script  type="text/javascript" language="javascript" src="{{ asset('js/images.js') }}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <style>
+            .jumbotron {
+                padding: 1rem 1rem !important;
+            }
+
+            p {
+                margin-bottom: 0rem;
+            }
+
+            .table td, .table th {
+                padding: .50rem;
+            }
+
+            .custom-file-input {
+                opacity: unset;
+            }
+
+            .custom-file-label {
+                background-color: transparent !important;
+                border: 0px !important;
+            }
+
+            .custom-file-label::after {
+                content: unset;
+            }
+        </style>
+
+    </head>
+      <body>
+        <!-- Navigation -->
+         <nav class="navbar navbar-expand-lg navbar-dark bg-success static-top" background-color="transparent">
+ <!--LOGO-->
+
+         <a class="navbar-brand" href="#">
+         <img src="/image/logo/logo2.png" alt=""  width="115" height="50">
+         </a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="#navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+        </button>
+  
+ <!--menu-->
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+              <ul class="navbar-nav mr-auto">
+              <li class="nav-item ">
+                  <a class="nav-link" href="{{ path('home_page') }}">Qui sommes-nous ?
+                  <span class="sr-only">(current)</span>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#des">Nos Destinations</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Découvrir nos activités</a>
+              </li>
+             
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ path('cabane_show') }}">louer une Cabane</a>
+              </li>
+         
+              <li class="nav-item">
+                 {% if app.user != null and is_granted('ROLE_HOTE') or is_granted('ROLE_ADMIN') %}
+                      <a class="nav-link" href="{{ path('cabane_new') }}">Rajouter vos cabanes</a>
+                  {% else %}
+                      <button class="btn-success"><a href="{{ path('devenir_partner')}}">Devenir un partenaire</a></button>
+                 {% endif %}
+              </li>
+
+          {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item">
+                   <a class="nav-link" href="{{ path('user_show')}}">Utilisateurs</a>
+                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('cabanead_show') }}">Les cabanes Ajoutés</a>
+                 </li>
+                <li class="nav-item">
+                      <a class="nav-link" href="#">Activités</a>
+                 </li>
+
+                 <li class="nav-item">
+                      <a class="nav-link" href="{{ path('partnerad_show') }}">Les partenaires</a>        
+                 </li>
+            {% endif %}
+
+             {% if is_granted('ROLE_HOTE') %}
+                <li class="nav-item">
+                   <a class="nav-link" href="{{ path('user_cabane')}}">Mes Cabane </a>
+                </li>
+            {% endif %}
+          </ul>
+          </div>
+
+    <!--la connexion--> 
+            {% if app.user  and is_granted('ROLE_HOTE') or is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')  %}
+
+                <div class="collapse navbar-collapse" id="navbar-mobile">
+                <span class="ml-md-3 mr-md-auto"></span>
+                 <ul class="navbar-nav">
+                    <li class="nav-item dropdown dropdown-user">
+                        <a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
+                            <span style="color: #0f151d">{{ app.user.nom }}</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a href="{{ path('security_logout') }}" class="dropdown-item"><i class="icon-switch2">se déconnecter</a>
+                            <a href="{{ path('user_edit') }}" class="dropdown-item"><i class="icon-switch2">mon compte</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            {% else %}
+                <div class="collapse navbar-collapse" id="navbar-mobile">
+                    <span class="ml-md-3 mr-md-auto"></span>
+                     <ul class="navbar-nav">
+                        <li class="nav-item dropdown dropdown-user">
+                            <a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
+                                <span style="color: #0f151d">Compte</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                            <a href="{{ path('security_login') }}" class="dropdown-item"><i class="icon-switch2">Se connecter</a>
+                            <a href="{{ path('security_inscr') }}" class="dropdown-item"><i class="icon-switch3">Inscrivez-vous !</a>
+                           </div>
+                        </li>
+                    </ul>
+                </div>
+               {% endif %}
+               </nav>
+               {% block body %}{% endblock %}
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Compte{% endblock %}
+
+{% block body %}
+<!--les cordonnés-->
+
+    <div class="jumbotron" style="margin: 0 auto; margin-top: 20px; width:80%; ">
+                <h1>Mes cordonnées </h1>
+                <hr>
+                    <h3>Nom:{{user.nom }}</h3>
+                    <h3>Prénom :{{user.prenom}}</h3>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>id: <b>{{user.id }}</b></p>
+                                <p>Email :<b>{{ user.email}}</b></p>                 
+                        </div>
+                    </div>           
+        <!-- /findecordonnées -->
+    </div>
+ <hr>
+    <div class="jumbotron" style="margin: 0 auto; margin-top: 20px; width:100%;">
+        <h3>Mes cabanes ajoutés</h3>
+        <a class="btn btn-sucess"  href="{{ path('cabane_new', {'user' : user.id}) }}">Ajouter une cabane</a>
+
+        <!-- liste des cabanes rajoutés par ce utilisateur-->
+        {% if user.cabanes|length == 0 %}
+        <div style="color: red; padding-left: 30px;">Pas de cabanes rajoutés pour le moument</div>
+        {% else %}
+
+            <table class="table table-hover" style="margin-top: 10px;">
+                <thead>
+                <tr class="table-primary">
+                    <th scope="col">#</th>
+                    <th scope="col">Nom de Cabane</th>
+                    <th scope="col">Destination </th>
+                    <th scope="col">Type de Cabane </th>
+                    <th scope="col">Capacité</th>
+                    <th scope="col">Date de disponibilité</th>
+                    <th scope="col">Date de no disponibilité</th>
+                    <th scope="col">Equipement</th>
+                    <th scope="col">Activités</th>
+                    <th scope="col">Hauteur de cabane </th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">se restaurer</th>
+                    <th scope="col">Images</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for cabane in user.cabanes %}
+                    <tr>
+                        <td>{{ cabane.id }}</td>
+                        <td>{{ cabane.nom }}</td>
+                        <td>{{cabane.destination}}</td>
+                        <td>{{ cabane.type }}</td>
+                        <td>{{ cabane.nbrPlace }}</td>
+                        <td>{{cabane.dateDisponible ? cabane.dateDisponible|date('Y-m-d') : '' }}</td>
+                        <td>{{cabane.dateNondisponible ? cabane.dateNondisponible|date('Y-m-d') : ''}}</td>
+                        <td>{{cabane.equipment}}</td>
+                        <td>{{cabane.activite}}</td>
+                        <td>{{cabane.hauteur}}</td>
+                        <td>{{ cabane.prix}}</td>
+                        <td>{{cabane.seRestaurer}}</td>
+                        <td>
+                        {% for image in cabane.images %}
+                        <a href="{{ asset('/uploads/'~image.name) }}">
+                        <img  src="{{ asset('/uploads/'~image.name) }}" style="width:50px;height=50px;"></a>
+                        {% endfor %}
+                        </td>
+
+                        <td><a class="btn btn-info" href="{{ path('cabane_edit', {'cabane' : cabane.id}) }}">Modifier</a></td>
+                        <td> {{include('cabane/supprimer.html.twig') }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+
+        <!-- /Liste des cabanes -->
+    </div>
+    <div class="modal-footer" style="width: 70%; margin: 0 auto; margin-top: 20px;">
+     <a class="btn btn-secondary" href="{{ path('cabane_show') }}">Retour</a>
+    </div>
+{% endblock %}
